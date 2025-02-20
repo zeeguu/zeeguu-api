@@ -25,6 +25,8 @@ jobs:
           python -m pip install --upgrade pip
           pip install pytest
           pip install -r requirements.txt
+          ZEEGUU_RESOURCES_FOLDER=`pwd`
+          echo $ZEEGUU_RESOURCES_FOLDER
           python setup.py develop
           python install_stanza_models.py
       - name: Test with pytest

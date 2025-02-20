@@ -87,17 +87,3 @@ def create_app(testing=False):
     warning("*** ==== ZEEGUU CORE: Linked model with: " + anon_conn_string)
 
     return app
-
-
-# install nltk punkt & tagger if missing
-# we can only do it here because the nltk loads in memory the unittest
-# and when that is detected, the configuration of the system is set to
-# testing... and it does not configure the model with the right db
-import nltk
-
-try:
-    nltk.data.path.append("/var/www/nltk_data")
-    nltk.sent_tokenize("I am a berliner.")
-except LookupError as e:
-    nltk.download("punkt")
-    nltk.download("averaged_perceptron_tagger")
